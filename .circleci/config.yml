@@ -10,7 +10,7 @@ jobs:
       - run:
         command: |
           pip install --user -r requirements.lock
-      - save_chace:
+      - save_cache:
         key: deps-{{checksum"requirements.lock"}}
         paths:
           - "~/.local"
@@ -29,6 +29,6 @@ workflows:
   all:
     jobs:
       - setup_dependencies
-      - test
+      - test:
         requires:
           - setup_dependencies
